@@ -33,7 +33,6 @@ const state = {
   guideIndex: 0
 };
 
-
 const AUDIO_FILES = {
   start: "assets/audio/start-theme.mp3",
   caveEnter: "assets/audio/cave-enter.mp3",
@@ -301,18 +300,19 @@ async function clearOnlinePlayers() {
 function updateStorageModeLabel(mode) {
   const label = $("#storageStatus");
   if (!label) return;
-  if (!hasApi()) {
-    label.textContent = "Mode lokal: data tersimpan di browser ini.";
-    label.className = "save-note local";
+
+  // Sembunyikan tulisan mode lokal / fallback / offline supaya tidak muncul di tampilan awal.
+  // Kalau MongoDB online, status kecil tetap boleh muncul agar kamu tahu API tersambung.
+  if (!hasApi() || mode !== "online") {
+    label.style.display = "none";
+    label.textContent = "";
+    label.className = "save-note hidden-status";
     return;
   }
-  if (mode === "online") {
-    label.textContent = "Mode online: leaderboard tersambung ke MongoDB.";
-    label.className = "save-note online";
-  } else {
-    label.textContent = "Mode fallback: API belum tersambung, data sementara tersimpan lokal.";
-    label.className = "save-note offline";
-  }
+
+  label.style.display = "block";
+  label.textContent = "Leaderboard tersambung ke MongoDB.";
+  label.className = "save-note online";
 }
 
 function makePlayerId(name, className) {
@@ -886,7 +886,6 @@ function nextQuestion() {
   }
 }
 
-
 function formatQuizTime(seconds) {
   const safe = Math.max(0, Number(seconds) || 0);
   const m = String(Math.floor(safe / 60)).padStart(2, "0");
@@ -942,7 +941,6 @@ function clearQuizTimer() {
     quiz.timerInterval = null;
   }
 }
-
 
 function finishQuiz(options = {}) {
   clearQuizTimer();
@@ -1003,7 +1001,6 @@ function showFinishModal() {
   });
   showModal("finishModal");
 }
-
 
 function isTypingTarget(target) {
   if (!target) return false;
