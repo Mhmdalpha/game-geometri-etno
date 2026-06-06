@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220">
+<rect width="320" height="220" rx="20" fill="#f7fbff"/>
+<g stroke="#1f365f" stroke-width="4" fill="#9fd3ff">
+<rect x="70" y="80" width="55" height="70"/>
+<rect x="125" y="80" width="70" height="70"/>
+<rect x="195" y="80" width="55" height="70"/>
+<polygon points="125,80 160,28 195,80" fill="#ffcc66"/>
+<polygon points="125,150 160,202 195,150" fill="#ffcc66"/>
+</g>
+<text x="160" y="20" text-anchor="middle" font-family="Arial" font-size="16" fill="#1f365f" font-weight="700">Jaring-jaring Prisma</text>
+</svg>

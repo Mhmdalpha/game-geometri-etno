@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240">
+<rect width="420" height="240" rx="24" fill="#e7f4ff"/>
+<text x="210" y="28" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#1b3c63">Atap Memanjang Benteng Fort Willem I</text>
+<g transform="translate(40,60)">
+<polygon points="30,100 95,40 330,65 260,130" fill="#d34b2f" stroke="#74301e" stroke-width="4"/>
+<polygon points="30,100 260,130 260,165 30,135" fill="#f2a65a" stroke="#74301e" stroke-width="4"/>
+<polygon points="260,130 330,65 330,100 260,165" fill="#c96b3a" stroke="#74301e" stroke-width="4"/>
+<g stroke="#74301e" stroke-width="2" opacity=".55"><line x1="60" y1="93" x2="290" y2="123"/><line x1="90" y1="84" x2="320" y2="113"/><line x1="125" y1="74" x2="330" y2="96"/></g>
+<rect x="70" y="115" width="35" height="35" fill="#eaf6ff" stroke="#333"/><rect x="130" y="122" width="35" height="35" fill="#eaf6ff" stroke="#333"/><rect x="195" y="128" width="35" height="35" fill="#eaf6ff" stroke="#333"/>
+</g>
+</svg>

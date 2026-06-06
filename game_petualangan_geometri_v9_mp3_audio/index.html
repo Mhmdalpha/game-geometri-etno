@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Petualangan Bangun Ruang: Benteng & Kota Lama</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <section id="startScreen" class="screen start-screen">
+      <div class="start-layout">
+        <div class="start-card glass">
+          <p class="eyebrow">Game Edukasi Etnomatematika</p>
+          <h1>Petualangan Bangun Ruang:<br><span>Benteng & Kota Lama</span></h1>
+          <p class="intro">
+            Jelajahi hutan geometri, dekati 3 goa misi, lalu selesaikan game
+            jaring-jaring, ciri bangun ruang, serta hitung volume dan luas permukaan.
+          </p>
+          <div class="identity-box">
+            <label for="studentName">Nama Siswa</label>
+            <label for="studentClass">Kelas</label>
+            <input id="studentName" type="text" placeholder="Tulis nama kamu..." maxlength="32" />
+            <input id="studentClass" type="text" placeholder="Contoh: VIII A" maxlength="20" />
+          </div>
+          <div class="start-actions">
+            <button id="btnStart" class="btn primary">Mulai Petualangan</button>
+            <button id="btnShowGuide" class="btn secondary">Petunjuk Game</button>
+          </div>
+          <p id="storageStatus" class="save-note">Mengecek mode penyimpanan...</p>
+        </div>
+
+        <aside class="leaderboard-card glass" aria-label="Leaderboard siswa">
+          <div class="leaderboard-head">
+            <div>
+              <p class="eyebrow">Data Tersimpan</p>
+              <h2>Leaderboard</h2>
+            </div>
+            <button id="btnClearLeaderboard" class="mini-btn danger" title="Hapus semua leaderboard">Hapus Semua</button>
+          </div>
+          <div id="leaderboardList" class="leaderboard-list"></div>
+          <p class="leaderboard-info">Klik <b>Hapus</b> untuk hapus user.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden" aria-label="Map petualangan">
+      <div id="map" class="map" tabindex="0">
+        <div class="hud top-left glass">
+          <strong id="hudName">Penjelajah</strong>
+          <span id="hudClass">Kelas -</span>
+          <span>Skor: <b id="hudScore">0</b></span>
+        </div>
+
+        <div class="hud top-right glass">
+          <div class="badge-row" id="badgeRow"></div>
+          <button id="btnHomeMap" class="mini-btn home" title="Pulang ke tampilan awal">🏠</button>
+          <button id="btnGuideMap" class="mini-btn" title="Petunjuk">?</button>
+          <button id="btnSoundMap" class="mini-btn sound" title="Matikan/Nyalakan musik">🔊</button>
+          <button id="btnReset" class="mini-btn danger" title="Reset skor">Reset</button>
+        </div>
+
+        <div id="cavesLayer"></div>
+        <div id="player" class="player facing-right" aria-label="Karakter pemain">
+          <span id="playerInitial" class="visually-hidden">Pemain</span>
+          <div class="player-shadow" aria-hidden="true"></div>
+          <div class="avatar" aria-hidden="true">
+            <span class="leg leg-left"></span>
+            <span class="leg leg-right"></span>
+            <span class="shoe shoe-left"></span>
+            <span class="shoe shoe-right"></span>
+            <span class="arm arm-left"></span>
+            <span class="arm arm-right"></span>
+            <span class="shirt"></span>
+            <span class="neck"></span>
+            <span class="head"></span>
+            <span class="hair"></span>
+            <span class="ear ear-left"></span>
+            <span class="ear ear-right"></span>
+            <span class="eye eye-left"></span>
+            <span class="eye eye-right"></span>
+            <span class="smile"></span>
+          </div>
+        </div>
+
+        <div id="interaction" class="interaction hidden glass">
+          <b id="interactionTitle">Masuk Goa</b>
+          <small id="interactionSubtitle">Tekan ENTER / klik tombol</small>
+          <button id="btnEnterCave" class="btn primary small">Masuk Game</button>
+        </div>
+
+        <div class="joystick-wrap" id="joystickWrap" aria-label="Kontrol gerak virtual">
+          <div class="joystick-base" id="joystickBase">
+            <div class="joy-arrow up">▲</div>
+            <div class="joy-arrow down">▼</div>
+            <div class="joy-arrow left">◀</div>
+            <div class="joy-arrow right">▶</div>
+            <div class="joystick-stick" id="joystickStick"></div>
+          </div>
+          <div class="joy-label">GERAK</div>
+        </div>
+
+        <button id="btnActionMobile" class="action-button">DEKATI</button>
+      </div>
+    </section>
+
+    <div id="guideModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-card guide-card glass">
+        <button class="close" data-close="guideModal">×</button>
+        <div class="guide-top">
+          <div>
+            <p class="eyebrow">Bantuan Bermain</p>
+            <h2>Petunjuk Game</h2>
+          </div>
+          <div id="guideSlideIndex" class="guide-slide-index">Slide 1 / 4</div>
+        </div>
+
+        <div class="guide-slider">
+          <button id="guidePrev" class="guide-nav" aria-label="Slide sebelumnya">←</button>
+
+          <div class="guide-slide-panel">
+            <h3 id="guideSlideTitle" class="guide-slide-title">Petunjuk Utama</h3>
+            <p id="guideSlideSubtitle" class="guide-slide-subtitle"></p>
+            <div id="guideSlideMedia" class="guide-slide-media"></div>
+            <div id="guideSlideBody" class="guide-slide-body"></div>
+            <p id="guideSlideNote" class="note guide-slide-note"></p>
+          </div>
+
+          <button id="guideNext" class="guide-nav" aria-label="Slide berikutnya">→</button>
+        </div>
+
+        <div class="guide-bottom-hint">
+          Gunakan tombol <b>←</b> dan <b>→</b> untuk melihat penjelasan Goa 1, Goa 2, dan Goa 3.
+        </div>
+      </div>
+    </div>
+
+    <div id="quizModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-card quiz-card glass">
+        <div class="quiz-head">
+          <div>
+            <p class="eyebrow" id="quizMiniTitle">Mini Game</p>
+            <h2 id="quizTitle">Judul Game</h2>
+          </div>
+          <div class="quiz-actions">
+            <button id="btnHomeQuiz" class="mini-btn home" title="Pulang ke tampilan awal">🏠</button>
+            <button class="close" id="btnCloseQuiz">×</button>
+          </div>
+        </div>
+        <div class="progress-line"><span id="progressFill"></span></div>
+        <div class="quiz-meta">
+          <span id="quizProgress">Soal 1/5</span>
+          <span id="quizCountdown" class="quiz-countdown">Waktu: <b>02:00</b></span>
+          <span>Skor game: <b id="quizScore">0</b></span>
+        </div>
+        <div id="questionImageWrap" class="question-image-wrap hidden">
+          <img id="questionImage" src="" alt="Gambar objek budaya" />
+        </div>
+        <h3 id="questionText">Pertanyaan</h3>
+        <div id="answerGrid" class="answer-grid"></div>
+        <div id="feedback" class="feedback hidden"></div>
+        <button id="btnNext" class="btn primary hidden">Lanjut</button>
+      </div>
+    </div>
+
+    <div id="finishModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-card finish-card glass">
+        <button class="close" data-close="finishModal">×</button>
+        <h2>🎉 Semua Goa Selesai!</h2>
+        <p id="finishText">Kamu berhasil menyelesaikan semua mini game.</p>
+        <div id="finishBadges" class="finish-badges"></div>
+        <button class="btn primary" data-close="finishModal">Kembali ke Map</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/api-config.js"></script>
+  <script src="src/game-data.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240">
+<defs><radialGradient id="b" cx="35%" cy="25%"><stop offset="0%" stop-color="#fff"/><stop offset="42%" stop-color="#e9eff4"/><stop offset="100%" stop-color="#788998"/></radialGradient></defs>
+<rect width="420" height="240" rx="24" fill="#f5f9f2"/>
+<text x="210" y="28" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#384c30">Bollard Kota Lama</text>
+<g transform="translate(110,40)">
+<ellipse cx="100" cy="170" rx="95" ry="18" fill="#a0ad92" opacity=".35"/>
+<circle cx="100" cy="95" r="70" fill="url(#b)" stroke="#4b5965" stroke-width="5"/>
+<path d="M55 70 Q100 115 145 70" fill="none" stroke="#4b5965" stroke-width="5" opacity=".45"/>
+<path d="M48 105 Q100 140 152 105" fill="none" stroke="#4b5965" stroke-width="5" opacity=".45"/>
+<path d="M80 30 Q60 95 80 160" fill="none" stroke="#4b5965" stroke-width="5" opacity=".35"/>
+<path d="M120 30 Q140 95 120 160" fill="none" stroke="#4b5965" stroke-width="5" opacity=".35"/>
+</g>
+</svg>

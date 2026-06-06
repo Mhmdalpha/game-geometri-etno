@@ -1,0 +1,96 @@
+{
+  "title": "Petualangan Bangun Ruang: Benteng & Kota Lama",
+  "version": "7.0-audio-mongodb-2minute-timer",
+  "type": "Offline HTML/CSS/JavaScript educational RPG mini game",
+  "subject": "Matematika kelas VIII - Bangun Ruang bernuansa etnomatematika",
+  "theme": "Benteng Fort Willem I dan Kota Lama Semarang",
+  "main_features": [
+    "Map hutan hijau HD 1920x1080",
+    "3 goa besar sebagai pintu masuk mini game",
+    "Karakter manusia CSS dengan animasi jalan halus",
+    "Joystick bulat kiri bawah seperti game RPG mobile",
+    "Kontrol keyboard WASD dan tombol panah",
+    "Tombol Home untuk pulang ke tampilan awal",
+    "Leaderboard di halaman awal kanan form nama/kelas",
+    "Penyimpanan banyak user memakai localStorage browser",
+    "Tombol hapus user per baris leaderboard dan hapus semua data",
+    "Progres siswa dilanjutkan otomatis jika nama dan kelas sama",
+    "Timer 2 menit per goa/mini game, otomatis selesai saat waktu habis",
+    "Soundtrack map/start game",
+    "Sound effect masuk goa yang sama untuk goa 1, 2, dan 3",
+    "Musik dalam Goa 1, Goa 2, dan Goa 3 berbeda",
+    "Efek suara jawaban benar, jawaban salah, soal ke-5, dan finish semua goa",
+    "Tombol mute/unmute musik pada HUD map"
+  ],
+  "mini_games": [
+    {
+      "id": "jaring",
+      "title": "Game 1: Tebak Jaring-Jaring",
+      "focus": "Memilih jaring-jaring prisma, limas, kerucut, tabung, dan konsep bola"
+    },
+    {
+      "id": "ciri",
+      "title": "Game 2: Tebak Bangun dari Ciri-Ciri",
+      "focus": "Mengenali bangun ruang dari sifat dan unsur-unsurnya"
+    },
+    {
+      "id": "hitung",
+      "title": "Game 3: Hitung Volume dan Luas",
+      "focus": "Menghitung luas permukaan dan volume objek geometri kontekstual"
+    }
+  ],
+  "assets": {
+    "background": "assets/background-forest-hd.jpg",
+    "caves": [
+      "assets/caves/cave-jaring.png",
+      "assets/caves/cave-ciri.png",
+      "assets/caves/cave-hitung.png"
+    ],
+    "character_sprite": "CSS avatar in index.html + styles.css",
+    "objects": "assets/objects/*.svg",
+    "nets": "assets/nets/*.svg",
+    "audio": [
+      "assets/audio/start-theme.wav",
+      "assets/audio/cave-enter.wav",
+      "assets/audio/cave-jaring-theme.wav",
+      "assets/audio/cave-ciri-theme.wav",
+      "assets/audio/cave-hitung-theme.wav",
+      "assets/audio/correct-ding.wav",
+      "assets/audio/wrong-buzz.wav",
+      "assets/audio/question-5.wav",
+      "assets/audio/finish-theme.wav"
+    ]
+  },
+  "controls": {
+    "keyboard": "WASD or arrow keys on the map only",
+    "mobile": "virtual joystick and MASUK button",
+    "enter_cave": "ENTER, E, or click Masuk Game"
+  },
+  "latest_updates": [
+    "Keyboard movement no longer blocks typing W/A/S/D in forms.",
+    "Movement input is active only while the map screen is open.",
+    "Player character replaced with smooth CSS walking avatar without sprite ghost artifacts.",
+    "Home button remains available on the map and quiz screens.",
+    "Added right-side leaderboard panel on the start screen.",
+    "Added per-student saved progress using browser localStorage.",
+    "Added delete button for individual leaderboard users.",
+    "Added clear all leaderboard and progress button.",
+    "Added Vercel API routes in /api for MongoDB Atlas leaderboard.",
+    "Added audio assets in assets/audio/. Sound files can be replaced with same filenames.",
+    "Changed countdown behavior: each cave/mini game now has a 2-minute timer, not a 2-second start delay.",
+    "When time is up, the mini game automatically finishes and the current score is saved/calculated."
+  ],
+  "storage": {
+    "mode": "localStorage + optional MongoDB API",
+    "frontendConfig": "src/api-config.js",
+    "backendFolder": "backend",
+    "database": "MongoDB Atlas",
+    "randomization": "Question order and answer options are shuffled every mini game session",
+    "vercelApiFolder": "api"
+  },
+  "timer": {
+    "per_mini_game_seconds": 120,
+    "auto_finish_when_time_up": true,
+    "score_behavior": "Current mini-game score is calculated and saved when time is up."
+  }
+}
